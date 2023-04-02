@@ -1,0 +1,132 @@
+.footer {
+  background-color: #3f4e65;
+  color: #fff;
+  display: flex;
+  height: 31.2rem;
+}
+.content {
+  background-color: #3f4e65;
+  color: #fff;
+  display: flex;
+  width: 85rem;
+  padding: 4.43rem 0;
+  margin: 0 auto;
+}
+.column {
+  flex: 1;
+}
+.logo {
+  width: 9.75rem;
+  margin-right: auto;
+}
+.contact button {
+  color: #fff;
+  font-size: 0.725rem;
+  font-weight: 400;
+  text-decoration: underline;
+}
+
+.column:first-child {
+}
+.text {
+  margin-top: 1rem;
+  text-align: left;
+  line-height: 1.2rem;
+  font-weight: 400;
+  width: 19.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: left;
+}
+.item {
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+.textSmall {
+  margin-top: 2.8rem;
+  text-align: left;
+}
+.inputWrapper {
+  position: relative;
+  width: 14.8rem;
+  height: 3.6rem;
+  margin-top: 0.9rem;
+}
+.input {
+  height: 100%;
+  width: 100%;
+  padding-left: 1rem;
+}
+.insideButton {
+  position: absolute;
+  right: 0.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.button {
+  margin-top: 1.56rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 13.75rem;
+  height: 4.25rem;
+}
+
+.iconContainer {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-start;
+}
+.iconContainer img:last-child {
+  margin-left: 0.4rem;
+}
+.contact {
+  text-align: left;
+  margin-top: 1.5rem;
+}
+.contactTextBold {
+}
+.footerMobile {
+  display: none;
+}
+@media (max-width: 771px) {
+  .footer {
+    display: none;
+  }
+  .footerMobile {
+    display: block;
+  }
+  .column {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footerFlexMobile {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+  .content {
+    flex-direction: column;
+    padding: 1rem;
+    width: unset;
+  }
+  .logo {
+    margin-right: unset;
+  }
+  .button {
+    width: 10rem;
+  }
+  .buttonUnderline {
+    display: none;
+  }
+}
+@media (max-width: 344px) {
+  .button {
+    width: 8rem;
+  }
+}

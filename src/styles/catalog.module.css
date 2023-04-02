@@ -1,0 +1,185 @@
+.flex {
+  display: flex;
+}
+.flexSB {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3.125rem;
+}
+
+.titleSmall {
+  text-align: left;
+  font-weight: 500;
+  font-size: 1rem;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+.button {
+  width: 3.67rem;
+  height: 3.67rem;
+  border-radius: 50%;
+  background-color: #ffc85e;
+}
+.buttonlarge {
+  width: 10.5rem;
+  height: 3.6rem;
+}
+.breadcrumbs {
+  display: flex;
+  margin-top: 3.125rem;
+  color: #3f4e65;
+  font-size: 0.825rem;
+}
+.breadcrumbs .child {
+  margin-left: 0.625rem;
+}
+.child:last-child {
+  color: #3f4e65;
+  opacity: 0.5;
+}
+.title {
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  font-weight: 500;
+  color: #111111;
+}
+.dropdownBtn {
+  display: none;
+}
+.cortMobile {
+  display: none;
+}
+.button img {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.buttonAdmin {
+  background-color: #3f4e65;
+  color: #fff;
+  width: 7rem;
+  height: 4rem;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-size: 1.25rem;
+}
+.sortMobile {
+  display: none;
+}
+.navMobile {
+  display: none;
+}
+
+@media (max-width: 771px) {
+  .flex {
+    flex-direction: column;
+  }
+  .title {
+    text-align: left;
+    font-size: 1.4rem;
+  }
+  .titleSmall {
+    font-size: 1.4rem;
+  }
+  .controls {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .dropdownBtn {
+    display: inline-block;
+  }
+  .flexDropdown {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 1.2rem;
+  }
+  .buttonContainer {
+    width: 100%;
+  }
+  .buttonlarge {
+    width: 15rem;
+  }
+  .sortDesk {
+    display: none;
+  }
+  .sortMobile {
+    display: block;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+  .circle {
+    width: 2rem;
+    height: 2rem;
+    background: #ffca65;
+    opacity: 0.4;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+  }
+  .navMobile {
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+    font-weight: 600;
+  }
+  .arrow {
+    border: 1px solid #3f4e65;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 4px;
+
+    transform: rotate(135deg);
+    position: absolute;
+    top: 11px;
+    left: 13px;
+  }
+  .navMobile p {
+    color: #3f4e65;
+    margin-left: 0.5rem;
+  }
+
+  .dropdownBtn {
+    width: 2rem;
+    height: 2rem;
+    background: #ffca65;
+    opacity: 0.4;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+  }
+  .arrowDown {
+    border: 1px solid #3f4e65;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 4px;
+
+    transform: rotate(42deg);
+    position: absolute;
+    top: 10px;
+    left: 11px;
+  }
+  .arrowUp {
+    border: 1px solid #3f4e65;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 4px;
+
+    transform: rotate(-134deg);
+    position: absolute;
+    top: 13px;
+    left: 12px;
+  }
+}

@@ -1,0 +1,99 @@
+.title {
+  width: 17rem;
+}
+.button {
+  height: 3rem;
+  width: 9.2rem;
+  margin-left: 2.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.item {
+  width: 20.3rem;
+  height: 32.625rem;
+  box-shadow: 0px 14px 39px -11px rgba(0, 0, 0, 0.06);
+  border-radius: 10px;
+  padding: 1rem;
+  position: relative;
+}
+.flex {
+  display: flex;
+  margin-top: 1rem;
+}
+.flex:last-child {
+  position: absolute;
+  bottom: 0.6em;
+  align-items: center;
+}
+.title {
+  font-weight: 700;
+  text-align: left;
+  margin-top: 0.75rem;
+}
+.value {
+  font-family: "Inter";
+  font-weight: 700;
+  margin-left: 0.3rem;
+}
+.categoryContainer {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+}
+.category {
+  padding: 0.1rem;
+  font-size: 0.7rem;
+  margin-top: 0.2rem;
+  background-color: rgb(206, 126, 97);
+  color: #fff;
+  border-radius: 1rem;
+}
+.inputGr {
+  width: 6rem;
+}
+.inputTitle {
+  width: 100%;
+}
+.selectGr {
+  width: 4rem;
+  margin-left: auto;
+  margin-right: 2rem;
+  background: transparent;
+  border: none;
+}
+.selectMulti {
+  height: 4rem;
+  width: 100%;
+}
+.adminButton {
+  border: 1px solid #455;
+}
+.image {
+  width: 12.5rem;
+  height: 12.5rem;
+  display: flex;
+  margin: 0 auto;
+}
+.imageSmall {
+  height: 8rem;
+}
+.image img {
+  width: 100%;
+  height: 100%;
+}
+.adminButton {
+  background-color: #3f4e65;
+  color: #fff;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.adminFlex {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.price {
+  font-weight: 800;
+}

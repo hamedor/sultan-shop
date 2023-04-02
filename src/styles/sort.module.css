@@ -1,0 +1,21 @@
+.select {
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  margin-left: 0.3rem;
+  color: #3f4e65;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.sort {
+  display: flex;
+}
+.text {
+  font-size: 1rem;
+  color: #111111;
+  font-weight: 500;
+}

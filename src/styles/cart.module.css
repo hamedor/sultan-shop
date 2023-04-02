@@ -1,0 +1,140 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.image img {
+  width: 10rem;
+  height: 10rem;
+}
+.control {
+  display: flex;
+  align-items: center;
+}
+.title,
+.description {
+  text-align: left;
+}
+.title {
+  margin-top: 0.625rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  width: 30rem;
+}
+.titleLarge {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-align: left;
+  margin-top: 3.125rem;
+}
+.description {
+  margin-top: 0.625rem;
+  font-size: 0.75rem;
+  width: 27.75rem;
+  color: #3f4e65;
+  font-weight: 300;
+}
+.price {
+  font-size: 1.675rem;
+  font-weight: 700;
+}
+.delete {
+  width: 3.6rem;
+  height: 3.6rem;
+  background-color: #ffc85e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonLarge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+}
+
+.breadcrumbs {
+  display: flex;
+  margin-top: 2.8125rem;
+  color: #3f4e65;
+  font-size: 0.825rem;
+}
+.breadcrumbs .child {
+  margin-left: 0.625rem;
+}
+.child:last-child {
+  color: #3f4e65;
+  opacity: 0.5;
+}
+.flex {
+  display: flex;
+  align-items: center;
+  width: 29rem;
+  justify-content: space-between;
+}
+.flexPrice {
+  display: flex;
+  align-items: center;
+  margin-top: 4.43rem;
+  margin-bottom: 4.43rem;
+}
+.navMobile {
+  display: none;
+}
+
+@media (max-width: 771px) {
+  .item {
+    flex-direction: column;
+    margin-top: 1.2rem;
+  }
+  .title {
+    width: unset;
+  }
+  .titleLarge {
+    font-size: 1.25rem;
+  }
+  .description {
+    width: unset;
+  }
+  .flex {
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+    width: 100%;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+  .circle {
+    width: 2rem;
+    height: 2rem;
+    background: #ffca65;
+    opacity: 0.4;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+  }
+  .navMobile {
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+    font-weight: 600;
+  }
+  .arrow {
+    border: 1px solid #3f4e65;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 4px;
+
+    transform: rotate(135deg);
+    position: absolute;
+    top: 11px;
+    left: 13px;
+  }
+  .navMobile p {
+    color: #3f4e65;
+    margin-left: 0.5rem;
+  }
+}

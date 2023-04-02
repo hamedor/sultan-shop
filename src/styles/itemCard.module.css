@@ -1,0 +1,210 @@
+.card {
+  min-height: 50rem;
+}
+.flex {
+  display: flex;
+}
+.column {
+  text-align: left;
+}
+.green {
+  color: #1fd85d;
+  font-size: 0.875rem;
+}
+.title {
+  margin-top: 0.625rem;
+}
+.size {
+  margin-top: 0.625rem;
+}
+.price {
+  font-weight: 800;
+  font-size: 1.875rem;
+}
+.line,
+.lineWidth,
+.lineLarge {
+  display: flex;
+  align-items: center;
+}
+.lineWidth {
+  justify-content: space-between;
+  align-items: center;
+  width: 30.625rem;
+}
+.lineLarge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 37.5rem;
+}
+.button,
+.priceButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.shareButton,
+.textBlock,
+.priceButton {
+  background-color: #fff;
+  box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+  height: 4.8rem;
+}
+.priceButton {
+  width: 8.625rem;
+}
+.textBlock {
+  width: 19.75rem;
+  display: flex;
+  align-items: center;
+}
+.priceButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.key {
+  color: #3f4e65;
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+.value {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #111111;
+  margin-left: 0.3125rem;
+}
+.aboutBlock {
+  margin-top: 2.18rem;
+}
+.aboutBlock .line:not(:first-child) {
+  margin-top: 0.3rem;
+}
+.dropdown {
+  margin-top: 1.875rem;
+}
+.text {
+  color: #3f4e65;
+  font-weight: 300;
+  font-size: 0.75rem;
+}
+.hr {
+  margin-top: 1.25rem;
+}
+
+.breadcrumbs {
+  display: flex;
+  margin-top: 2.8125rem;
+  color: #3f4e65;
+  font-size: 0.825rem;
+}
+.breadcrumbs .child {
+  margin-left: 0.625rem;
+}
+.child:last-child {
+  color: #3f4e65;
+  opacity: 0.5;
+}
+.list {
+  margin-top: 1rem;
+}
+.dropdown .text {
+  margin-top: 1rem;
+}
+.image img {
+  width: 41rem;
+  height: 40rem;
+}
+.lineMobile {
+  display: none;
+}
+.navMobile {
+  display: none;
+}
+
+@media (max-width: 771px) {
+  .breadcrumbs {
+    display: none;
+  }
+  .flex {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+  .card {
+    min-height: 67rem;
+  }
+  .lineLarge {
+    flex-direction: column;
+    width: unset;
+    margin-top: 0.6rem;
+  }
+  .lineWidth {
+    justify-content: flex-start;
+    width: unset;
+    margin-top: 1.2rem;
+  }
+  .lineMobile {
+    display: block;
+    display: flex;
+    width: 16rem;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+  }
+  .buttonMobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .priceButton {
+    width: 100%;
+    justify-content: space-evenly;
+    margin-top: 0.6rem;
+  }
+  .button {
+    display: none;
+  }
+  .shareButton {
+    display: none;
+  }
+  .mobileInc {
+    margin-left: 2rem;
+  }
+  .image img {
+    width: 16rem;
+    height: auto;
+  }
+  .breadcrumbs {
+    display: none;
+  }
+  .circle {
+    width: 2rem;
+    height: 2rem;
+    background: #ffca65;
+    opacity: 0.4;
+    border-radius: 50%;
+    display: flex;
+    position: relative;
+  }
+  .navMobile {
+    display: flex;
+    align-items: center;
+    margin-top: 6rem;
+    font-weight: 600;
+  }
+  .arrow {
+    border: 1px solid #3f4e65;
+    border-width: 0 1px 1px 0;
+    display: inline-block;
+    padding: 4px;
+
+    transform: rotate(135deg);
+    position: absolute;
+    top: 11px;
+    left: 13px;
+  }
+  .navMobile p {
+    color: #3f4e65;
+    margin-left: 0.5rem;
+  }
+}

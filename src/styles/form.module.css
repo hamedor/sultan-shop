@@ -1,0 +1,40 @@
+.selectMulti {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  width: 95%;
+  font-size: 1rem;
+}
+
+.form {
+  border: 1px solid #3f4e65;
+  width: 14rem;
+}
+
+.inputGr {
+  width: 7rem;
+}
+.flex {
+  margin-top: 1rem;
+}
+.file {
+  width: 12rem;
+  margin-left: auto;
+}
+.input {
+  width: 95%;
+}
+.adminButton {
+  background-color: #3f4e65;
+  color: #fff;
+  width: 95%;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+@media (max-width: 771px) {
+  .form {
+    margin: 0 auto;
+  }
+}

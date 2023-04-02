@@ -1,0 +1,23 @@
+.control {
+  display: flex;
+  align-items: center;
+  width: 7rem;
+  justify-content: space-between;
+}
+.button {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 198, 80, 0.3) 0%,
+    rgba(254, 202, 110, 0.3) 97.25%
+  );
+  width: 2.125rem;
+  height: 1.435rem;
+  border-radius: 1000px;
+  color: #3f4e65;
+  font-size: 0.75rem;
+}
+.count {
+  font-size: 0.875rem;
+  color: #3f4e65;
+  font-weight: 400;
+}

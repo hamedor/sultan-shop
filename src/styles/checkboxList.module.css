@@ -1,0 +1,65 @@
+.flex {
+  display: flex;
+  width: 12.6rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.975rem;
+  color: #3f4e65;
+  font-size: 0.875rem;
+}
+.count {
+  font-size: 0.625rem;
+}
+.name {
+  margin-right: 0.3rem;
+  text-align: left;
+  margin-left: 1rem;
+}
+.count {
+  margin-right: auto;
+}
+
+.inputWrapper {
+  position: relative;
+  width: 14.8rem;
+  height: 3.6rem;
+}
+.input {
+  height: 100%;
+  width: 100%;
+  padding-left: 1rem;
+}
+.insideButton {
+  position: absolute;
+  right: 0.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.insideButton img {
+  width: 2.43rem;
+  height: 2.43rem;
+}
+.title {
+  margin-top: 1.925rem;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.inputWrapper {
+  margin-top: 0.975rem;
+}
+.smallButton {
+  width: 100%;
+  margin-top: 1rem;
+  text-align: left;
+  color: #3f4e65;
+}
+
+@media (max-width: 771px) {
+  .controls {
+    width: 100%;
+  }
+  .inputWrapper {
+    width: 100%;
+  }
+}

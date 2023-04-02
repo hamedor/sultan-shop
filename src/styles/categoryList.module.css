@@ -1,0 +1,37 @@
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+.horizontal {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2.5rem;
+  margin-bottom: 1.875rem;
+}
+.buttonHorizontal {
+  width: 7.5rem;
+  height: 4.35rem;
+  padding: 0 1.2rem;
+  color: #3f4e65;
+  box-shadow: 0px 15px 70px -11px rgba(43, 28, 1, 0.04);
+  border-radius: 0.8rem;
+  font-size: 1rem;
+}
+
+.buttonVertical {
+  text-align: left;
+  width: 100%;
+  margin-top: 0.625rem;
+  color: #3f4e65;
+}
+.buttonVertical:first-child {
+  margin-top: 2.5rem;
+  font-size: 1rem;
+  color: #111111;
+}
+@media (max-width: 771px) {
+  .horizontal {
+    display: none;
+  }
+}

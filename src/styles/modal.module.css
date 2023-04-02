@@ -1,0 +1,14 @@
+.modal {
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  top: 10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #3f4e65;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
