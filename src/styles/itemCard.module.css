@@ -90,7 +90,13 @@
   font-size: 0.75rem;
 }
 .hr {
-  margin-top: 1.25rem;
+  margin-top: 1.55rem;
+}
+.hr{
+ 
+  opacity: 0.05;
+  border: 1px dashed #000000;
+
 }
 
 .breadcrumbs {

@@ -68,22 +68,26 @@ const Cart = ({ setItemsInCart }: any) => {
       </div>
 
       <h2 className={styles.titleLarge}>Корзина</h2>
-
+      <hr className={styles.hr}></hr>
       {array.length > 0 ? (
         array.map((e: any) => {
           return (
+            
             <div key={e.barcode}>
+              
               <div className={styles.item}>
                 <div className={styles.image}>{isBase64(e.image)}</div>
                 <div className={styles.column}>
                   <ProductSize sizeType={e.sizeType} size={e.size} />
-                  <p className={styles.title}>{e.title}</p>
+                  <p className={styles.title}><Link className={styles.title}  to={`/item/${e.barcode}`}>{e.title}</Link></p>
+                 
+                  
                   <p className={styles.description}>{e.description}</p>
                 </div>
 
                 <div className={styles.flex}>
                   <IncreaseAndDecreaseItem
-                    /* allowzero={true} */ barcode={e.barcode}
+                    barcode={e.barcode}
                     count={e.count}
                     setArray={setArray}
                   />
@@ -101,7 +105,7 @@ const Cart = ({ setItemsInCart }: any) => {
                   </div>
                 </div>
               </div>
-              <hr></hr>
+              <hr className={styles.hr}></hr>
             </div>
           );
         })

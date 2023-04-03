@@ -212,8 +212,6 @@
   .headerMobile {
     height: 6.5rem;
     width: 100%;
-    /* position: fixed; */
-    /* display: flex; */
     background-color: #fff;
 
     z-index: 110;

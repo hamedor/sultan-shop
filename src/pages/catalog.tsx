@@ -12,9 +12,9 @@ import styles from "../styles/catalog.module.css";
 
 import { Product } from "../App";
 import initiazieItemsWithCount from "../functions/initializeItemsWithCount";
-import SortItems from "../components/sortItems";
 import { Link } from "react-router-dom";
 import trash from "../assets/icons/delete.svg";
+import Sort from '../components/sort';
 
 interface CatalogProps {
   data: RootObject;
@@ -57,6 +57,10 @@ const Catalog = ({
 
   const [dropdown, setDropdown] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const [sortedItems, setSortedItems] = useState<Product[]>(items);
+
+
 
   interface Item {
     category: string[];
@@ -137,8 +141,17 @@ const Catalog = ({
     const lsData: any = localStorage.getItem("items9090");
     const parsedData = JSON.parse(lsData);
 
+    document.querySelectorAll('input[type=checkbox]').forEach( (el:any) => el.checked = false )
+
+    setSelectedProductCheckBoxes([]);
+    setSelectedBrandCheckBoxes([]);
+    setMinPrice(0);
+    setMaxPrice(10000);
     setItems(parsedData);
-  };
+
+};
+
+
 
   return (
     <div className={styles.catalog}>
@@ -161,7 +174,9 @@ const Catalog = ({
       <div className={styles.flexSB}>
         <h2 className={styles.title}>Косметика и гигиена</h2>
         <div className={styles.sortDesk}>
-          <SortItems items={items} setItems={setItems} />
+
+
+        <Sort items={items} setSortedItems={setSortedItems}/>
         </div>
       </div>
 
@@ -226,7 +241,7 @@ const Catalog = ({
             setSelectedCategory={setSelectedCategory}
           />
           <div className={styles.sortMobile}>
-            <SortItems items={items} setItems={setItems} />
+            <Sort items={items} setSortedItems={setSortedItems}/>
           </div>
 
           <button
@@ -247,7 +262,7 @@ const Catalog = ({
         <ProductList
           categories={categories}
           setItemsInCart={setItemsInCart}
-          items={items}
+          items={sortedItems}
           setItems={setItems}
           adminMode={adminMode}
           currentPage={currentPage}

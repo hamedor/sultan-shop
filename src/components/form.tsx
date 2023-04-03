@@ -57,7 +57,8 @@ const Form = ({ categories, adminMode, setItems }: FormProps) => {
     return number;
   };
 
-  const saveItem = () => {
+  const saveItem = (e:any) => {
+    e.preventDefault();
     const items: any = localStorage.getItem("items9090");
     const parsed = JSON.parse(items);
 
@@ -189,7 +190,7 @@ const Form = ({ categories, adminMode, setItems }: FormProps) => {
         <button
           type="submit"
           className={styles.adminButton}
-          onClick={() => saveItem()}
+          onClick={(e) => saveItem(e)}
         >
           Сохранить
         </button>

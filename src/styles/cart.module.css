@@ -30,6 +30,7 @@
 }
 .description {
   margin-top: 0.625rem;
+  margin-bottom: 0.625rem;
   font-size: 0.75rem;
   width: 27.75rem;
   color: #3f4e65;
@@ -83,6 +84,12 @@
 }
 .navMobile {
   display: none;
+}
+.hr{
+    margin-left: 1.25rem;
+    opacity: 0.05;
+    border: 1px dashed #000000;
+  
 }
 
 @media (max-width: 771px) {
