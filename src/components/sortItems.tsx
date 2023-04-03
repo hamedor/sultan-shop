@@ -3,7 +3,11 @@ import { useEffect, useState } from "react";
 import styles from "../styles/sort.module.css";
 
 const SortItems = ({ items, setItems }: any) => {
-  const [sortType, setSortType] = useState("titleUp");
+  const [sortType, setSortType] = useState("");
+
+  useEffect(()=>{
+    setSortType('titleUp');
+  },[])
 
   const handleSort = (e: any) => {
     setSortType(e.target.value);

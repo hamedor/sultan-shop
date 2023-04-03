@@ -56,6 +56,7 @@ const Catalog = ({
   const [handleFilters, setHandleFilters] = useState<Product[]>([]);
 
   const [dropdown, setDropdown] = useState<boolean>(true);
+  const [currentPage, setCurrentPage] = useState<number>(1);
 
   interface Item {
     category: string[];
@@ -74,6 +75,7 @@ const Catalog = ({
     const filtered = newItem.filter((e: Item) =>
       e.category.includes(selectedCategory)
     );
+    setCurrentPage(1);
 
     selectedCategory !== "Уход за телом"
       ? setItems(filtered)
@@ -96,7 +98,7 @@ const Catalog = ({
   };
 
   useEffect(() => {
-    let result2: any = localStorage.getItem("items");
+    let result2: any = localStorage.getItem("items9090");
     let result = JSON.parse(result2);
 
     result = checkboxFilter(result, selectedProductCheckBoxes);
@@ -132,7 +134,7 @@ const Catalog = ({
     setItems(handleFilters);
   };
   const deleteFilters = () => {
-    const lsData: any = localStorage.getItem("items");
+    const lsData: any = localStorage.getItem("items9090");
     const parsedData = JSON.parse(lsData);
 
     setItems(parsedData);
@@ -248,6 +250,8 @@ const Catalog = ({
           items={items}
           setItems={setItems}
           adminMode={adminMode}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
         />
       </div>
     </div>

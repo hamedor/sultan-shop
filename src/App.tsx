@@ -12,7 +12,7 @@ import Main from "./pages/main";
 
 import { Product as importedProduct } from "./interfaces";
 import initiazieItemsWithCount from "./functions/initializeItemsWithCount";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter , Route, Routes } from "react-router-dom";
 
 export interface Product extends importedProduct {
   count: number;
@@ -26,7 +26,8 @@ function App() {
   const [items, setItems] = useState<Product[]>([]);
 
   const [itemsInCart, setItemsInCart] = useState<Product[]>(() => {
-    const items = localStorage.getItem("cart");
+    const items = localStorage.getItem("cart9090");
+   
     return items ? JSON.parse(items) : [];
   });
 
@@ -38,12 +39,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const itemsCount = itemsInCart.reduce((acc: number, curr: Product) => {
+    const itemsCount = itemsInCart?.reduce((acc: number, curr: Product) => {
       return acc + curr.count;
     }, 0);
     setItemsCount(itemsCount);
 
-    const price = itemsInCart.reduce((acc: number, curr: Item) => {
+    const price = itemsInCart?.reduce((acc: number, curr: Item) => {
       return acc + curr.count * curr.price;
     }, 0);
     setPrice(price);
@@ -51,7 +52,7 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
+      <HashRouter>
         <div className="wrapper">
           <Header price={price} itemsCount={itemsCount} />
           <Routes>
@@ -86,7 +87,7 @@ function App() {
           </Routes>
         </div>
         <Footer />
-      </Router>
+      </HashRouter>
     </div>
   );
 }

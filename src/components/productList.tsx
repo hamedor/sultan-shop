@@ -10,6 +10,8 @@ interface ProductListProps {
   adminMode: boolean;
   setItems: Dispatch<SetStateAction<Product[]>>;
   categories: string[];
+  currentPage:number;
+  setCurrentPage:any;
 }
 
 const ProductList = ({
@@ -18,8 +20,10 @@ const ProductList = ({
   setItemsInCart,
   setItems,
   adminMode,
+  currentPage,
+  setCurrentPage
 }: ProductListProps) => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
+ 
   const itemsPerPage = 9;
 
   const lastItem = currentPage * itemsPerPage;
@@ -48,7 +52,7 @@ const ProductList = ({
   const [triggerChange, setTriggerChange] = useState<number | null>(null);
 
   const [array, setArray] = useState<any>(() => {
-    const items = localStorage.getItem("cart");
+    const items = localStorage.getItem("cart9090");
     return items ? JSON.parse(items) : [];
   });
 
@@ -82,7 +86,7 @@ const ProductList = ({
   };
 
   useEffect(() => {
-    const counts = array.reduce((acc: any, curr: any) => {
+    const counts = array?.reduce((acc: any, curr: any) => {
       const item = acc.find(({ barcode }: any) => barcode === curr.barcode);
       item
         ? item.count++
@@ -103,13 +107,13 @@ const ProductList = ({
 
     setItemsInCart(counts);
 
-    localStorage.setItem("cart", JSON.stringify(counts));
+    localStorage.setItem("cart9090", JSON.stringify(counts));
   }, [array]);
 
   const deleteItem = (barcode: number) => {
     setItems((old: any) => {
       const newItems = old.filter((e: any) => e.barcode !== barcode);
-      localStorage.setItem("items", JSON.stringify(newItems));
+      localStorage.setItem("items9090", JSON.stringify(newItems));
       return newItems;
     });
   };
@@ -141,7 +145,7 @@ const ProductList = ({
             }
           : e
       );
-      localStorage.setItem("items", JSON.stringify(newItems));
+      localStorage.setItem("items9090", JSON.stringify(newItems));
       return newItems;
     });
 

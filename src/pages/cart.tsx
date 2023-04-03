@@ -17,7 +17,7 @@ const Cart = ({ setItemsInCart }: any) => {
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const [array, setArray] = useState<any>(() => {
-    const items = localStorage.getItem("cart");
+    const items = localStorage.getItem("cart9090");
     return items ? JSON.parse(items) : [];
   });
 
@@ -36,12 +36,12 @@ const Cart = ({ setItemsInCart }: any) => {
 
     setTotalPrice(totalPrice);
 
-    localStorage.setItem("cart", JSON.stringify(array));
+    localStorage.setItem("cart9090", JSON.stringify(array));
   }, [array]);
 
   const handleModal = () => {
     setShowModal(true);
-    localStorage.removeItem("cart");
+    localStorage.removeItem("cart9090");
     setArray([]);
     setItemsInCart([]);
     setTimeout(() => {

@@ -58,7 +58,7 @@ const Form = ({ categories, adminMode, setItems }: FormProps) => {
   };
 
   const saveItem = () => {
-    const items: any = localStorage.getItem("items");
+    const items: any = localStorage.getItem("items9090");
     const parsed = JSON.parse(items);
 
     const barcode = generateBarcode(parsed.map((e: Item) => e.barcode));
@@ -88,7 +88,7 @@ const Form = ({ categories, adminMode, setItems }: FormProps) => {
     parsed.push(newItem);
 
     try {
-      localStorage.setItem("items", JSON.stringify(parsed));
+      localStorage.setItem("items9090", JSON.stringify(parsed));
     } catch (e: any) {
       if (e.name === "QuotaExceededError") {
         alert("LocalStorage переполнен!");

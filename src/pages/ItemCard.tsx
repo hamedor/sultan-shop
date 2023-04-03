@@ -28,14 +28,14 @@ const ItemCard = ({ setItemsInCart }: any) => {
     if (typeof id === "undefined") {
       return [];
     }
-    const items = localStorage.getItem("cart");
+    const items = localStorage.getItem("cart9090");
     return items && JSON.parse(items).find((e: Item) => e.barcode === +id)
       ? JSON.parse(items)
       : [];
   });
 
   const [item, setItem] = useState<any>(() => {
-    const items = localStorage.getItem("items");
+    const items = localStorage.getItem("items9090");
     return items ? JSON.parse(items) : [];
   });
 
@@ -72,7 +72,7 @@ const ItemCard = ({ setItemsInCart }: any) => {
         }
       });
       localStorage.setItem(
-        "cart",
+        "cart9090",
         JSON.stringify([...updatedOldItems, ...newItems])
       );
       return [...updatedOldItems, ...newItems];
