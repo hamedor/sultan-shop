@@ -121,6 +121,9 @@
   width: 4.3rem;
   height: 5.5rem;
 }
+.cartPrice p{
+  width: 4.2rem;
+}
 .button {
   display: flex;
   align-items: center;

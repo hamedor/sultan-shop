@@ -1,0 +1,13 @@
+.breadcrumbs {
+    display: flex;
+    margin-top: 2.8125rem;
+    color: #3f4e65;
+    font-size: 0.825rem;
+  }
+  .breadcrumbs .child {
+    margin-left: 0.625rem;
+  }
+  .child:last-child {
+    color: #3f4e65;
+    opacity: 0.5;
+  }

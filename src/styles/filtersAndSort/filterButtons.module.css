@@ -1,0 +1,21 @@
+.button {
+    width: 3.67rem;
+    height: 3.67rem;
+    border-radius: 50%;
+    background-color: #ffc85e;
+}
+
+.buttonlarge {
+    width: 10.5rem;
+    height: 3.6rem;
+}
+.button img{
+    width: 2rem;
+    height: 2rem;
+}
+
+@media (max-width: 771px) {
+    .buttonlarge {
+        width: 15rem;
+    }
+}

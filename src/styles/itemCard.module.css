@@ -1,8 +1,10 @@
 .card {
-  min-height: 50rem;
+  min-height: 64rem;
 }
 .flex {
   display: flex;
+  justify-content: space-around;
+  margin-top: 2rem;
 }
 .column {
   text-align: left;
@@ -88,6 +90,7 @@
   color: #3f4e65;
   font-weight: 300;
   font-size: 0.75rem;
+  width: 35rem;
 }
 .hr {
   margin-top: 1.55rem;
@@ -130,12 +133,16 @@
 }
 
 @media (max-width: 771px) {
+  .card{
+    min-height: 109rem;
+  }
   .breadcrumbs {
     display: none;
   }
   .flex {
     flex-direction: column;
     margin-top: 2rem;
+    align-items: center;
   }
   .card {
     min-height: 67rem;

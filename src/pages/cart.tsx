@@ -1,48 +1,35 @@
-import { useState, useEffect } from "react";
-import IncreaseAndDecreaseItem from "../components/increaseAndDecreaseItem";
-import ProductSize from "../components/productSize";
+import { useState, Dispatch, SetStateAction } from "react";
+import IncreaseAndDecreaseItem from "../components/features/increaseAndDecreaseItem";
+import ProductSize from "../components/item/itemSize";
 import Modal from "../components/modalPage";
 import styles from "../styles/cart.module.css";
 import trash from "../assets/icons/delete.svg";
 import { Link } from "react-router-dom";
-import isBase64 from "../functions/isBase64";
+import ItemImage from "../components/item/itemImage";
+import { ItemInCart } from "../interfaces";
+import ItemPrice from "../components/item/itemPrice";
+import ItemDescription from "../components/item/itemDescription";
+import Breadcrumbs from "../components/breadcrumbs";
 
-interface Item {
-  price: number;
-  count: number;
+interface CartProps{
+  price:number;
+  itemsInCart: ItemInCart[];
+  setItemsInCart: Dispatch<SetStateAction<ItemInCart[]>>;
 }
 
-const Cart = ({ setItemsInCart }: any) => {
+const Cart = ({ price, itemsInCart, setItemsInCart }: CartProps) => {
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [totalPrice, setTotalPrice] = useState<number>(0);
-
-  const [array, setArray] = useState<any>(() => {
-    const items = localStorage.getItem("cart9090");
-    return items ? JSON.parse(items) : [];
-  });
+  
 
   const deleteItem = (barcode: number) => {
-    setArray((old: any) => {
-      return old.filter((e: any) => e.barcode !== barcode);
+    setItemsInCart((old) => {
+      return old.filter((e) => e.barcode !== barcode);
     });
   };
-
-  useEffect(() => {
-    setItemsInCart(array);
-
-    const totalPrice = array.reduce((total: number, item: Item) => {
-      return total + item.price * item.count;
-    }, 0);
-
-    setTotalPrice(totalPrice);
-
-    localStorage.setItem("cart9090", JSON.stringify(array));
-  }, [array]);
 
   const handleModal = () => {
     setShowModal(true);
     localStorage.removeItem("cart9090");
-    setArray([]);
     setItemsInCart([]);
     setTimeout(() => {
       setShowModal(false);
@@ -57,52 +44,47 @@ const Cart = ({ setItemsInCart }: any) => {
         </div>
         <p>НАЗАД</p>
       </div>
-      <div className={styles.breadcrumbs}>
-        <Link className={styles.child} to="/">
-          Главная
-        </Link>
-        <hr className={styles.child}></hr>
-        <Link className={styles.child} to="/cart">
-          Корзина
-        </Link>
-      </div>
+      <Breadcrumbs breadcrumbs ={[
+            {label:'Главная', to: '/'},
+            {label: 'Корзина', to: '/cart'}
+          ]} />
 
       <h2 className={styles.titleLarge}>Корзина</h2>
       <hr className={styles.hr}></hr>
-      {array.length > 0 ? (
-        array.map((e: any) => {
+      {itemsInCart.length > 0 ? (
+        itemsInCart.map((item: ItemInCart) => {
           return (
             
-            <div key={e.barcode}>
+            <div key={item.barcode}>
               
               <div className={styles.item}>
-                <div className={styles.image}>{isBase64(e.image)}</div>
+                <ItemImage cart={true} item={item}/>
                 <div className={styles.column}>
-                  <ProductSize sizeType={e.sizeType} size={e.size} />
-                  <p className={styles.title}><Link className={styles.title}  to={`/item/${e.barcode}`}>{e.title}</Link></p>
+                  <ProductSize sizeType={item.sizeType} size={item.size} />
+                  <p className={styles.title}><Link className={styles.title}  to={`/item/${item.barcode}`}>{item.title}</Link></p>
                  
                   
-                  <p className={styles.description}>{e.description}</p>
+                  <ItemDescription cart={true} item={item}/>
                 </div>
 
                 <div className={styles.flex}>
-                  <IncreaseAndDecreaseItem
-                    barcode={e.barcode}
-                    count={e.count}
-                    setArray={setArray}
-                  />
-
-                  <p className={styles.price}>
-                    {e.price} <span>&#8381;</span>
-                  </p>
-                  <div className={styles.delete}>
-                    <button
-                      className={styles.button}
-                      onClick={() => deleteItem(e.barcode)}
-                    >
-                      <img src={trash} alt="иконка мусорное ведро"></img>
-                    </button>
-                  </div>
+                    <IncreaseAndDecreaseItem
+                      barcode={item.barcode}
+                      count={item.count}
+                      setItemsInCart={setItemsInCart}
+                      item={item}
+                    />
+                    <ItemPrice  item={item} styleLarge={true}/>
+                    
+                    <div className={styles.delete}>
+                      <button
+                        className={styles.button}
+                        onClick={() => deleteItem(item.barcode)}
+                      >
+                        <img src={trash} alt="иконка мусорное ведро"></img>
+                      </button>
+                    </div>
+                  
                 </div>
               </div>
               <hr className={styles.hr}></hr>
@@ -113,7 +95,7 @@ const Cart = ({ setItemsInCart }: any) => {
         <p>Корзина пуста!</p>
       )}
 
-      {showModal && array.length > 0 ? <Modal /> : null}
+      {showModal && itemsInCart.length > 0 ? <Modal /> : null}
       <div className={styles.flexPrice}>
         <button
           onClick={handleModal}
@@ -122,7 +104,7 @@ const Cart = ({ setItemsInCart }: any) => {
           Оформить заказ
         </button>
         <p className={styles.price}>
-          {totalPrice} <span>&#8381;</span>
+          {price} <span>&#8381;</span>
         </p>
       </div>
     </div>

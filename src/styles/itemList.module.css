@@ -1,0 +1,26 @@
+.products {
+  width: 100%;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 64rem;
+  margin-left: auto;
+  justify-content: space-evenly;
+}
+.flex {
+  display: flex;
+}
+
+
+
+
+
+@media (max-width: 771px) {
+  .list {
+    flex-direction: column;
+    margin: 0 auto;
+    align-items: center;
+  }
+}

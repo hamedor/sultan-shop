@@ -1,4 +1,5 @@
 const isBase64 = (image: string) => {
+  
   if (image.startsWith("data:image")) {
     return <img src={image} alt="фото товара"></img>;
   } else {

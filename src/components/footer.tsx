@@ -7,6 +7,8 @@ import visa from "../assets/icons/visa.png";
 import mastercard from "../assets/icons/mastercard.png";
 import triangle from "../assets/icons/triangle.png";
 import downloadIcon from "../assets/icons/download.svg";
+import Title from "./footer/title";
+import ListItem from "./footer/listItem";
 
 const Footer = () => {
   return (
@@ -36,44 +38,27 @@ const Footer = () => {
             </div>
           </div>
           <div className={styles.column}>
-            <h3 className={styles.title}>Меню сайта:</h3>
+
+            <Title title="Меню сайта"/>
             <ul className={styles.list}>
-              <li className={styles.item}>
-                <a href="#">О компании</a>
-              </li>
-              <li className={styles.item}>
-                <a href="#">Доставка и оплата</a>
-              </li>
-              <li className={styles.item}>
-                <a href="#">Возврат</a>
-              </li>
-              <li className={styles.item}>
-                <a href="#">Контакты</a>
-              </li>
+              <ListItem text={'О компании'}/>
+              <ListItem text={'Доставка и оплата'}/>
+              <ListItem text={'Возврат'}/>
+              <ListItem text={'Контакты'}/>
             </ul>
           </div>
           <div className={styles.column}>
-            <h3 className={styles.title}>Категории:</h3>
+            <Title title="Категории"/>
             <ul className={styles.list}>
-              <li className={styles.item}>
-                <a href="#">Бытовая химий</a>
-              </li>
-              <li className={styles.item}>
-                <a href="#">Косметика и гигиена</a>
-              </li>
-              <li className={styles.item}>
-                <a href="#">Товары для дома</a>
-              </li>
-              <li className={styles.item}>
-                <a href="#">Товары для детей и мам</a>
-              </li>
-              <li className={styles.item}>
-                <a href="#">Посуда</a>
-              </li>
+              <ListItem text={'Бытовая химия'}/>
+              <ListItem text={'Косметика и гигиена'}/>
+              <ListItem text={'Товары для дома'}/>
+              <ListItem text={'Товары для детей и мам'}/>
+              <ListItem text={'Посуда'}/>
             </ul>
           </div>
           <div className={styles.column}>
-            <h3 className={styles.title}>Скачать прайс-лист:</h3>
+            <Title title="Скачать прайс-лист:"/>
 
             <button className={`${styles.button} button-large`}>
               <p>Прайс-лист</p>
@@ -88,8 +73,7 @@ const Footer = () => {
             </div>
           </div>
           <div className={styles.column}>
-            <h3 className={styles.title}>Контакты:</h3>
-
+            <Title title="Контакты:"/>
             <div className={styles.contact}>
               <a className={styles.contactTextBold} href="tel:+77774900091">
                 +7 (777) 490-00-91
@@ -121,7 +105,7 @@ const Footer = () => {
         <div className={styles.content}>
           <div className={styles.column}>
             <div className={styles.logo}>
-              <a href="#">
+              <a href="/#">
                 <img src={logo} alt="Логотип компании Султан"></img>
               </a>
             </div>
@@ -150,43 +134,28 @@ const Footer = () => {
           <div className={styles.footerFlexMobile}>
             <div>
               <h3 className={styles.title}>Меню сайта:</h3>
+                <Title title="Меню сайта"/>
               <ul className={styles.list}>
-                <li className={styles.item}>
-                  <a href="#">О компании</a>
-                </li>
-                <li className={styles.item}>
-                  <a href="#">Доставка и оплата</a>
-                </li>
-                <li className={styles.item}>
-                  <a href="#">Возврат</a>
-                </li>
-                <li className={styles.item}>
-                  <a href="#">Контакты</a>
-                </li>
+                <ListItem text={'О компании'}/>
+                <ListItem text={'Доставка и оплата'}/>
+                <ListItem text={'Возврат'}/>
+                <ListItem text={'Контакты'}/>
               </ul>
             </div>
             <div>
               <h3 className={styles.title}>Категории:</h3>
+                <Title title="Категории:"/>
               <ul className={styles.list}>
-                <li className={styles.item}>
-                  <a href="#">Бытовая химий</a>
-                </li>
-                <li className={styles.item}>
-                  <a href="#">Косметика и гигиена</a>
-                </li>
-                <li className={styles.item}>
-                  <a href="#">Товары для дома</a>
-                </li>
-                <li className={styles.item}>
-                  <a href="#">Товары для детей и мам</a>
-                </li>
-                <li className={styles.item}>
-                  <a href="#">Посуда</a>
-                </li>
+                <ListItem text={'Бытовая химия'}/>
+                <ListItem text={'Косметика и гигиена'}/>
+                <ListItem text={'Товары для дома'}/>
+                <ListItem text={'Товары для детей и мам'}/>
+                <ListItem text={'Посуда'}/>
               </ul>
             </div>
           </div>
           <h3 className={styles.title}>Контакты:</h3>
+          <Title title="Категории:"/>
 
           <div className={styles.footerFlexMobile}>
             <div className={styles.contact}>

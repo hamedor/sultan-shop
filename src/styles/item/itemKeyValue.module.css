@@ -1,0 +1,9 @@
+.value {
+  font-family: "Inter";
+  font-weight: 700;
+  margin-left: 0.3rem;
+}
+.flex {
+  display: flex;
+  margin-top: 1rem;
+}

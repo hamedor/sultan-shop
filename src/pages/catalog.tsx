@@ -1,28 +1,28 @@
 import { useEffect, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 
-import CategoryList from "../components/categoryList";
-import CheckboxList from "../components/checkboxList";
-import PriceFilter from "../components/priceFilter";
-import ProductList from "../components/productList";
+import CategoryList from "../components/features/filtersAndSort/categoryList";
+import CheckboxList from "../components/features/filtersAndSort/checkboxList";
+import PriceFilter from "../components/features/filtersAndSort/priceFilter";
+import ProductList from "../components/itemList";
+import FilterButtons from "../components/features/filtersAndSort/filterButtons";
 
-import Form from "../components/form";
 import { RootObject } from "../interfaces";
 import styles from "../styles/catalog.module.css";
 
-import { Product } from "../App";
-import initiazieItemsWithCount from "../functions/initializeItemsWithCount";
-import { Link } from "react-router-dom";
-import trash from "../assets/icons/delete.svg";
-import Sort from '../components/sort';
+import { Item, ItemInCart } from '../interfaces';
+import initializeItems from "../functions/initializeItems";
+
+import Breadcrumbs from "../components/breadcrumbs";
+import Sort from '../components/features/filtersAndSort/sort';
+
+import ItemAndForm from "../components/itemAndForm";
 
 interface CatalogProps {
   data: RootObject;
-  items: Product[];
-  setItems: Dispatch<SetStateAction<Product[]>>;
-  setItemsInCart: Dispatch<SetStateAction<Product[]>>;
-  itemsInCart: Product[];
-  children?: React.ReactNode;
+  items: Item[];
+  setItems: Dispatch<SetStateAction<Item[]>>;
+  setItemsInCart: Dispatch<SetStateAction<ItemInCart[]>>;
 }
 
 const Catalog = ({
@@ -30,51 +30,37 @@ const Catalog = ({
   items,
   setItems,
   setItemsInCart,
-  itemsInCart,
-  children,
+
 }: CatalogProps) => {
+  
   const [categories, setCategories] = useState<string[]>([]);
-  const [selectedCategory, setSelectedCategory] =
-    useState<string>("Уход за телом");
-  const [selectedProductCheckBoxes, setSelectedProductCheckBoxes] = useState<
-    string[]
-  >([]);
-  const [selectedBrandCheckBoxes, setSelectedBrandCheckBoxes] = useState<
-    string[]
-  >([]);
+  const [selectedCategory, setSelectedCategory] = useState<string>("Уход за телом");
+  const [selectedProductCheckboxes, setSelectedProductCheckboxes] = useState<string[]>([]);
+  const [selectedBrandCheckboxes, setSelectedBrandCheckboxes] = useState<string[]>([]);
 
   const [adminMode, setAdminMode] = useState<boolean>(false);
 
   const [minPrice, setMinPrice] = useState<number>(0);
   const [maxPrice, setMaxPrice] = useState<number>(10000);
 
-  const [producers, setProducers] = useState<{ name: string; count: number }[]>(
-    []
-  );
+  const [producers, setProducers] = useState<{ name: string; count: number }[]>([]);
   const [brands, setBrands] = useState<{ name: string; count: number }[]>([]);
-
-  const [handleFilters, setHandleFilters] = useState<Product[]>([]);
-
+  const [handleFilters, setHandleFilters] = useState<Item[]>([]);
   const [dropdown, setDropdown] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(1);
-
-  const [sortedItems, setSortedItems] = useState<Product[]>(items);
-
+  const [sortedItems, setSortedItems] = useState<Item[]>(items);
 
 
-  interface Item {
-    category: string[];
-    price: number;
-  }
 
   useEffect(() => {
     setCategories([
-      ...new Set<string>(data?.products.flatMap((e) => e.category)),
+      ...new Set<string>(data?.items.flatMap((e) => e.category)),
     ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    const newItem = initiazieItemsWithCount(data);
+    const newItem = initializeItems();
 
     const filtered = newItem.filter((e: Item) =>
       e.category.includes(selectedCategory)
@@ -84,9 +70,10 @@ const Catalog = ({
     selectedCategory !== "Уход за телом"
       ? setItems(filtered)
       : setItems(newItem);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategory]);
 
-  const checkboxFilter = (array: Product[], selectedCheckBoxes: string[]) => {
+  const checkboxFilter = (array: Item[], selectedCheckBoxes: string[]) => {
     if (selectedCheckBoxes.length !== 0) {
       return array.filter(
         (e) =>
@@ -97,26 +84,25 @@ const Catalog = ({
     return array;
   };
 
-  const priceFilter = (array: Product[]): Product[] => {
+  const priceFilter = (array: Item[]): Item[] => {
     return array.filter((e: Item) => e.price > minPrice && e.price < maxPrice);
   };
 
   useEffect(() => {
-    let result2: any = localStorage.getItem("items9090");
-    let result = JSON.parse(result2);
+    let result = initializeItems();
 
-    result = checkboxFilter(result, selectedProductCheckBoxes);
-    result = checkboxFilter(result, selectedBrandCheckBoxes);
+    result = checkboxFilter(result, selectedProductCheckboxes);
+    result = checkboxFilter(result, selectedBrandCheckboxes);
     result = priceFilter(result);
 
     const uniqueProducer = [
-      ...new Set(data.products.flatMap((e) => e.producer)),
+      ...new Set(data.items.flatMap((e) => e.producer)),
     ];
     const prod = uniqueProducer.map((e) => ({
       name: e,
       count: result?.filter((str: any) => str.producer === e).length,
     }));
-    const uniqueBrand = [...new Set(data.products.flatMap((e) => e.brand))];
+    const uniqueBrand = [...new Set(data.items.flatMap((e) => e.brand))];
     const brand = uniqueBrand.map((e) => ({
       name: e,
       count: result?.filter((str: any) => str.brand === e).length,
@@ -126,30 +112,16 @@ const Catalog = ({
     setBrands(brand);
 
     setHandleFilters(result);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
-    selectedProductCheckBoxes,
-    selectedBrandCheckBoxes,
+    selectedProductCheckboxes,
+    selectedBrandCheckboxes,
     minPrice,
     maxPrice,
     items,
   ]);
 
-  const applyFilters = () => {
-    setItems(handleFilters);
-  };
-  const deleteFilters = () => {
-    const lsData: any = localStorage.getItem("items9090");
-    const parsedData = JSON.parse(lsData);
 
-    document.querySelectorAll('input[type=checkbox]').forEach( (el:any) => el.checked = false )
-
-    setSelectedProductCheckBoxes([]);
-    setSelectedBrandCheckBoxes([]);
-    setMinPrice(0);
-    setMaxPrice(10000);
-    setItems(parsedData);
-
-};
 
 
 
@@ -162,15 +134,12 @@ const Catalog = ({
         <p>НАЗАД</p>
       </div>
 
-      <div className={styles.breadcrumbs}>
-        <Link className={styles.child} to="/">
-          Главная
-        </Link>
-        <hr className={styles.child}></hr>
-        <Link className={styles.child} to="/catalog">
-          Каталог
-        </Link>
-      </div>
+      <Breadcrumbs breadcrumbs ={[
+            {label:'Главная', to: '/'},
+            {label: 'Каталог', to: '/catalog'}
+          ]} />
+
+
       <div className={styles.flexSB}>
         <h2 className={styles.title}>Косметика и гигиена</h2>
         <div className={styles.sortDesk}>
@@ -210,27 +179,26 @@ const Catalog = ({
               />
               <CheckboxList
                 items={producers}
-                selectedCheckBoxes={selectedProductCheckBoxes}
-                setSelectedCheckBoxes={setSelectedProductCheckBoxes}
+                selectedCheckboxes={selectedProductCheckboxes}
+                setSelectedCheckboxes={setSelectedProductCheckboxes}
                 title={"Производитель"}
               />
               <CheckboxList
                 items={brands}
-                selectedCheckBoxes={selectedBrandCheckBoxes}
-                setSelectedCheckBoxes={setSelectedBrandCheckBoxes}
+                selectedCheckboxes={selectedBrandCheckboxes}
+                setSelectedCheckboxes={setSelectedBrandCheckboxes}
                 title={"Бренд"}
               />
 
               <div className={styles.buttonContainer}>
-                <button
-                  onClick={applyFilters}
-                  className={`${styles.buttonlarge} button-large`}
-                >
-                  Показать
-                </button>
-                <button onClick={deleteFilters} className={styles.button}>
-                  <img src={trash} alt="иконка мусорное ведро"></img>
-                </button>
+                <FilterButtons
+                  handleFilters={handleFilters}
+                  setItems={setItems}
+                  setSelectedProductCheckBoxes={setSelectedProductCheckboxes}
+                  setSelectedBrandCheckBoxes={setSelectedBrandCheckboxes}
+                  setMinPrice={setMinPrice}
+                  setMaxPrice={setMaxPrice}
+                />
               </div>
             </div>
           ) : null}
@@ -252,7 +220,8 @@ const Catalog = ({
           </button>
 
           {adminMode ? (
-            <Form
+            <ItemAndForm
+              alwaysShowTotalForm={true}
               categories={categories}
               adminMode={adminMode}
               setItems={setItems}

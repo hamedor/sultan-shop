@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState,} from "react";
 import data from "./assets/data.json";
 
 import "./App.css";
-import Header from "./components/header";
+import Header from "./components/header/header";
 import Footer from "./components/footer";
 
 import Catalog from "./pages/catalog";
@@ -10,45 +10,24 @@ import Cart from "./pages/cart";
 import ItemCard from "./pages/ItemCard";
 import Main from "./pages/main";
 
-import { Product as importedProduct } from "./interfaces";
-import initiazieItemsWithCount from "./functions/initializeItemsWithCount";
+import { Item } from "./interfaces";
+import initializeItems from './functions/initializeItems';
 import { HashRouter , Route, Routes } from "react-router-dom";
+import initializeItemsInCart from "./functions/initializeItemsInCart";
 
-export interface Product extends importedProduct {
-  count: number;
-}
-interface Item {
-  count: number;
-  price: number;
-}
+
+import  useCart  from "./hooks/useCart";
+
 
 function App() {
-  const [items, setItems] = useState<Product[]>([]);
 
-  const [itemsInCart, setItemsInCart] = useState<Product[]>(() => {
-    const items = localStorage.getItem("cart9090");
-   
-    return items ? JSON.parse(items) : [];
-  });
 
-  const [itemsCount, setItemsCount] = useState<number>(0);
-  const [price, setPrice] = useState<number>(0);
+  const [items, setItems] = useState<Item[]>(initializeItems());
 
-  useEffect(() => {
-    setItems(initiazieItemsWithCount(data));
-  }, []);
+  const { itemsInCart, setItemsInCart, itemsCount, price } = useCart(initializeItemsInCart());
 
-  useEffect(() => {
-    const itemsCount = itemsInCart?.reduce((acc: number, curr: Product) => {
-      return acc + curr.count;
-    }, 0);
-    setItemsCount(itemsCount);
 
-    const price = itemsInCart?.reduce((acc: number, curr: Item) => {
-      return acc + curr.count * curr.price;
-    }, 0);
-    setPrice(price);
-  }, [itemsInCart]);
+
 
   return (
     <div className="App">
@@ -64,21 +43,19 @@ function App() {
                   data={data}
                   items={items}
                   setItems={setItems}
-                  itemsInCart={itemsInCart}
                   setItemsInCart={setItemsInCart}
                 />
               }
             />
             <Route
               path="/cart"
-              element={<Cart setItemsInCart={setItemsInCart} />}
+              element={<Cart price={price} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} />}
             />
 
             <Route
               path="/item/:id"
               element={
                 <ItemCard
-                  items={items}
                   setItemsInCart={setItemsInCart}
                   itemsInCart={itemsInCart}
                 />

@@ -1,6 +1,4 @@
-.title {
-  width: 17rem;
-}
+
 .button {
   height: 3rem;
   width: 9.2rem;
@@ -27,11 +25,7 @@
   bottom: 0.6em;
   align-items: center;
 }
-.title {
-  font-weight: 700;
-  text-align: left;
-  margin-top: 0.75rem;
-}
+
 .value {
   font-family: "Inter";
   font-weight: 700;

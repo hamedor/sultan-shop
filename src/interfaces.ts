@@ -1,8 +1,8 @@
 export interface RootObject {
-  products: Product[];
+  items: Item[];
 }
 
-export interface Product {
+export interface Item {
   image: string;
   title: string;
   sizeType: string;
@@ -13,4 +13,10 @@ export interface Product {
   description: string;
   price: number;
   category: string[];
+}
+
+
+export interface ItemInCart extends Item {
+  count: number;
+
 }
