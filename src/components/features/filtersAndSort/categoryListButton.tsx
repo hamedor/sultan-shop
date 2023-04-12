@@ -13,7 +13,7 @@ const CategoryListButton = ({vertical, setSelectedCategory, category}:CategoryLi
 
     return(
         <button
-            onClick={(e) => setSelectedCategory((e.target as HTMLElement).innerText)}
+            onClick={() => setSelectedCategory(category)}
             className={
               vertical ? styles.buttonVertical : styles.buttonHorizontal
             }

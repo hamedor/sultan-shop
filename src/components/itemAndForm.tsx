@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 import { Item, ItemInCart } from "../interfaces";
 import { defaultImage } from "../assets/defaultImage";
 import initializeItems from "../functions/initializeItems";
+import generateBarcode from "../functions/generateBarcode";
 
 import TotalItems from "./item/totalItems";
 import ItemImage from "./item/itemImage";
@@ -70,17 +71,7 @@ const ItemAndForm = ({
         barcode: barcode || 0
   })
 
-  const generateBarcode = (barcodes: number[]): number => {
-    const min = 100000;
-    const max = 999999;
 
-    const number = Math.floor(Math.random() * (max - min + 1)) + min;
-
-    if (barcodes.includes(number)) {
-      return generateBarcode(barcodes);
-    }
-    return number;
-  };
 
   const saveItem = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
@@ -93,27 +84,27 @@ const ItemAndForm = ({
   };
 
   const updateItem = () => {
-  setItems((old): Item[]=> {
-    const newItems = old.map((e) =>
-      e.barcode === barcode
-        ? {
-            ...e,
-            image: item.image,
-            size: item.size,
-            sizeType: item.sizeType,
-            producer: item.producer,
-            brand: item.brand,
-            price: item.price,
-            title: item.title,
-            category: item.category,
-          }
-        : e
-    );
+    setItems((old): Item[]=> {
+      const newItems = old.map((e) =>
+        e.barcode === barcode
+          ? {
+              ...e,
+              image: item.image,
+              size: item.size,
+              sizeType: item.sizeType,
+              producer: item.producer,
+              brand: item.brand,
+              price: item.price,
+              title: item.title,
+              category: item.category,
+            }
+          : e
+      );
 
-    localStorage.setItem("items9090", JSON.stringify(newItems));
-    setisItemEdit(false);
-    return newItems;
-  });
+      localStorage.setItem("items9090", JSON.stringify(newItems));
+      setisItemEdit(false);
+      return newItems;
+    });
   }
   const createItem = () => {
     const items: Item[] = initializeItems();

@@ -20,14 +20,9 @@ import  useCart  from "./hooks/useCart";
 
 
 function App() {
-
-
   const [items, setItems] = useState<Item[]>(initializeItems());
 
   const { itemsInCart, setItemsInCart, itemsCount, price } = useCart(initializeItemsInCart());
-
-
-
 
   return (
     <div className="App">

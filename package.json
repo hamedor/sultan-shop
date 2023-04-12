@@ -26,7 +26,7 @@
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -49,10 +49,15 @@
   },
   "devDependencies": {
     "gh-pages": "^5.0.0",
+    "jes": "^0.6.1",
     "jest-localstorage-mock": "^2.4.26",
     "prettier": "2.8.7"
   },
   "jest": {
-    "resetMocks": false
+    "resetMocks": false,
+    "collectCoverageFrom": [
+      "**/*.tsx",
+      "!**/node_modules/**"
+    ]
   }
 }

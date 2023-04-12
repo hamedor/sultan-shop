@@ -3,7 +3,7 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom";
-import 'jest-localstorage-mock';
+/* import 'jest-localstorage-mock';
 
 const localStorageMock = {
     getItem: jest.fn(),
@@ -13,4 +13,4 @@ const localStorageMock = {
     length: 0,
     key: jest.fn(),
   };
-  global.localStorage = localStorageMock;
+  global.localStorage = localStorageMock; */

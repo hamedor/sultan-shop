@@ -18,13 +18,13 @@ const Breadcrumbs = ({item, breadcrumbs}:BreadcrumbsProps) => {
         <div className={styles.breadcrumbs}>
           {breadcrumbs.map(e=>{
             return(
-              <>
+              <div key={e.label}>
              
               <Link className={styles.child} to={e.to}>
             {e.label}
           </Link>
           <hr className={styles.child}></hr>
-          </>
+          </div>
             )
           })}
 

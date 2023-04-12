@@ -7,10 +7,11 @@ const mockCategories = ['Category 1', 'Category 2'];
 
 
 
-describe('MyComponent', () => {
+
+describe('ItemAndFormRender', () => {
  
     test('отрисовка компонента TotalForm при alwaysShowTotalForm и adminMode === true', () => {
-    render(<ItemAndForm  setItems={mockSetItems} categories={mockCategories}  alwaysShowTotalForm={true} adminMode={true} />);
+      render(<ItemAndForm  setItems={mockSetItems} categories={mockCategories}  alwaysShowTotalForm={true} adminMode={true} />);
       expect(screen.getByTestId('form')).toBeInTheDocument();
     });
   
@@ -18,4 +19,5 @@ describe('MyComponent', () => {
       render(<ItemAndForm setItems={mockSetItems} categories={mockCategories}  alwaysShowTotalForm={false} adminMode={false} />);
       expect(screen.queryByTestId('form')).not.toBeInTheDocument();
     });
-  });
+});
+
