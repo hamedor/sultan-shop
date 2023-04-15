@@ -4,13 +4,13 @@ import { Dispatch, SetStateAction } from "react";
 import CategoryList from "../components/features/filtersAndSort/categoryList";
 import CheckboxList from "../components/features/filtersAndSort/checkboxList";
 import PriceFilter from "../components/features/filtersAndSort/priceFilter";
-import ProductList from "../components/itemList";
+import ItemList from "../components/itemList";
 import FilterButtons from "../components/features/filtersAndSort/filterButtons";
 
 import { RootObject } from "../interfaces";
 import styles from "../styles/catalog.module.css";
 
-import { Item, ItemInCart } from '../interfaces';
+import { Item } from '../interfaces';
 import initializeItems from "../functions/initializeItems";
 
 import Breadcrumbs from "../components/breadcrumbs";
@@ -22,14 +22,14 @@ interface CatalogProps {
   data: RootObject;
   items: Item[];
   setItems: Dispatch<SetStateAction<Item[]>>;
-  setItemsInCart: Dispatch<SetStateAction<ItemInCart[]>>;
+
 }
 
 const Catalog = ({
   data,
   items,
   setItems,
-  setItemsInCart,
+
 
 }: CatalogProps) => {
   
@@ -228,9 +228,9 @@ const Catalog = ({
             />
           ) : null}
         </div>
-        <ProductList
+        <ItemList
           categories={categories}
-          setItemsInCart={setItemsInCart}
+     
           items={sortedItems}
           setItems={setItems}
           adminMode={adminMode}

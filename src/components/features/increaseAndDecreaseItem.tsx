@@ -1,26 +1,23 @@
 import addToCart from "../../functions/addToCart";
 import styles from "../../styles/incAndDec.module.css";
 
+import CartStore from '../../stores/cartStore';
+
 interface incAndDecProps {
   barcode: number;
   count: number | number[];
-  setItemsInCart: any;
   item?: any;
 }
 
 const IncreaseAndDecreaseItem = ({
   barcode,
   count,
-  setItemsInCart,
+  
   item,
 }: incAndDecProps) => {
 
   const decreaseCount = (barcode: number) => {
-    setItemsInCart((old: any) =>
-      old.map((item: any) =>
-          item.barcode === barcode ? { ...item, count: item.count - 1 } : item
-        ).filter((item: any) => item.count > 0)
-    );
+    CartStore.decreaseCount(barcode)
   };
 
   
@@ -30,7 +27,7 @@ const IncreaseAndDecreaseItem = ({
         -
       </button>
       <p className={styles.count}>{count}</p>
-      <button className={styles.button} onClick={() => addToCart(item, setItemsInCart)}>
+      <button className={styles.button} onClick={() => addToCart(item)}>
         +
       </button>
     </div>

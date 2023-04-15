@@ -1,20 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
-import { Item,ItemInCart } from "../interfaces";
+import { Item } from "../interfaces";
+import CartStore from '../stores/cartStore';
 
 
-
-const addToCart = (item:Item, setItemsInCart?:Dispatch<SetStateAction<ItemInCart[]>>) => {
-
-        setItemsInCart?.((old) => {
-          const itemExists = old.some((e) => e.barcode === item.barcode);
-          if (itemExists) {
-            return old.map((e) =>
-              e.barcode === item.barcode ? { ...e, count: e.count + 1 } : e
-            );
-          } else {
-            return [...old, { ...item, count: 1 }];
-          }
-        });
+const addToCart = (item:Item,) => {
+  CartStore.addToCart(item)
 };
 
 export default addToCart;

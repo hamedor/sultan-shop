@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 
-import { Item, ItemInCart } from "../interfaces";
+import { Item } from "../interfaces";
 import { defaultImage } from "../assets/defaultImage";
 import initializeItems from "../functions/initializeItems";
 import generateBarcode from "../functions/generateBarcode";
@@ -29,7 +29,7 @@ interface ItemAndFormProps {
   category?: string[];
   categories: string[];
   barcode?: number;
-  setItemsInCart?: Dispatch<SetStateAction<ItemInCart[]>>;
+
 }
 
 export interface ItemAndFormChildProps{
@@ -52,7 +52,6 @@ const ItemAndForm = ({
     category,
     categories,
     barcode,
-    setItemsInCart
  }: ItemAndFormProps) => {
   
 
@@ -159,7 +158,7 @@ const ItemAndForm = ({
     <>
       {showTotalItems && !isItemEdit && (
         <li className={styles.item}>
-          <TotalItems category={category}  item={item} isItemEdit={isItemEdit} size={size} sizeType={sizeType} setItemsInCart={setItemsInCart}/>
+          <TotalItems category={category}  item={item} isItemEdit={isItemEdit} size={size} sizeType={sizeType} />
           {adminMode && (
             <div className={styles.adminFlex}>
               <button className={styles.adminButton} onClick={() => deleteItem(barcode)}>

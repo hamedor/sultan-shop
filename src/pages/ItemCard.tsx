@@ -1,6 +1,5 @@
 import { useState} from "react";
 import { useParams } from "react-router-dom";
-import { Dispatch, SetStateAction } from "react";
 
 import IncreaseAndDecreaseItem from "../components/features/increaseAndDecreaseItem";
 import styles from "../styles/itemCard.module.css";
@@ -14,14 +13,14 @@ import { Item, ItemInCart } from "../interfaces";
 import ItemImage from "../components/item/itemImage";
 import ItemKeyValue from "../components/item/itemKeyValue";
 import Breadcrumbs from "../components/breadcrumbs";
-import addToCart from "../functions/addToCart";
+
+import CartStore from '../stores/cartStore'
 
 interface itemCardProps {
-  setItemsInCart: Dispatch<SetStateAction<ItemInCart[]>>;
   itemsInCart:ItemInCart[]
 }
 
-const ItemCard = ({ setItemsInCart, itemsInCart }: itemCardProps) => {
+const ItemCard = ({ itemsInCart }: itemCardProps) => {
   const { id } = useParams<{ id: string }>();
 
   const [descriptionIsOpen, setDescriptionIsOpen] = useState<boolean>(false);
@@ -79,13 +78,13 @@ const ItemCard = ({ setItemsInCart, itemsInCart }: itemCardProps) => {
                   <IncreaseAndDecreaseItem
                       barcode={item.barcode}
                       count={getCount(item.barcode)}
-                      setItemsInCart={setItemsInCart}
+    
                       item={item}
                     /> 
                   </div>
 
                  <button
-                    onClick={() => addToCart(item, setItemsInCart)}
+                    onClick={() => CartStore.addToCart(item)}
                     className={`${styles.button} button-large`}
                   >
                     <p>В корзину</p>
@@ -95,7 +94,7 @@ const ItemCard = ({ setItemsInCart, itemsInCart }: itemCardProps) => {
 
                 <div className={styles.lineMobile}>
                   <button
-                    onClick={() => addToCart(item, setItemsInCart)}
+                    onClick={() => CartStore.addToCart(item)}
                     className={`${styles.buttonMobile} button-large`}
                   >
                     <p>В корзину</p>

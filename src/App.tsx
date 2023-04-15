@@ -1,4 +1,4 @@
-import { useState,} from "react";
+import { useState, useEffect} from "react";
 import data from "./assets/data.json";
 
 import "./App.css";
@@ -14,21 +14,26 @@ import { Item } from "./interfaces";
 import initializeItems from './functions/initializeItems';
 import { HashRouter , Route, Routes } from "react-router-dom";
 import initializeItemsInCart from "./functions/initializeItemsInCart";
+import { Observer } from 'mobx-react-lite';
 
-
-import  useCart  from "./hooks/useCart";
+import cartStore from './stores/cartStore';
 
 
 function App() {
   const [items, setItems] = useState<Item[]>(initializeItems());
 
-  const { itemsInCart, setItemsInCart, itemsCount, price } = useCart(initializeItemsInCart());
+
+  useEffect(() => {
+     cartStore.setItemsInCart(initializeItemsInCart())
+  }, [])
 
   return (
+    <Observer>
+    {() => (
     <div className="App">
       <HashRouter>
         <div className="wrapper">
-          <Header price={price} itemsCount={itemsCount} />
+          <Header price={cartStore.price} itemsCount={cartStore.itemsCount} />
           <Routes>
             <Route path="/" element={<Main />} />
             <Route
@@ -38,21 +43,19 @@ function App() {
                   data={data}
                   items={items}
                   setItems={setItems}
-                  setItemsInCart={setItemsInCart}
                 />
               }
             />
             <Route
               path="/cart"
-              element={<Cart price={price} itemsInCart={itemsInCart} setItemsInCart={setItemsInCart} />}
+              element={<Cart price={cartStore.price} itemsInCart={cartStore.itemsInCart} />}
             />
 
             <Route
               path="/item/:id"
               element={
                 <ItemCard
-                  setItemsInCart={setItemsInCart}
-                  itemsInCart={itemsInCart}
+                  itemsInCart={cartStore.itemsInCart}
                 />
               }
             />
@@ -60,7 +63,10 @@ function App() {
         </div>
         <Footer />
       </HashRouter>
-    </div>
+
+    </div>  
+    )}
+    </Observer>
   );
 }
 

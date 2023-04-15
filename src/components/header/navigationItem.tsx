@@ -8,9 +8,9 @@ const NavigationItem = ({text}:NavigationItemProps) => {
 
     return(
         <li>
-            <li className={styles.navigationItem}>
+            <p className={styles.navigationItem}>
                 <a href="/#">{text}</a>
-            </li>
+            </p>
         </li>
     )
 }

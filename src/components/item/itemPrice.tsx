@@ -1,4 +1,4 @@
-import { ItemInCart, Item } from '../../interfaces';
+import { Item } from '../../interfaces';
 import styles from "../../styles/itemAndForm.module.css";
 
 interface ItemPriceProps{
@@ -7,8 +7,6 @@ interface ItemPriceProps{
 }
 
 const ItemPrice = ({item, styleLarge}:ItemPriceProps) => {
-
-    
 
     return(
         <p className={styleLarge ? styles.priceLarge : styles.price}>

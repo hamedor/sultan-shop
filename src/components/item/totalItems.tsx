@@ -1,5 +1,3 @@
-import { ItemInCart } from "../../interfaces";
-import { Dispatch, SetStateAction } from "react";
 import ItemImage from "./itemImage";
 import ItemSize from "./itemSize";
 import ItemTitle from "./itemTitle";
@@ -18,10 +16,10 @@ interface TotalItemsProps{
     size:number | undefined;
     sizeType:string | undefined;
     isItemEdit: boolean;
-    setItemsInCart?: Dispatch<SetStateAction<ItemInCart[]>>;
+
 }
 
-const TotalItems = ({category ,item, isItemEdit, size, sizeType, setItemsInCart}:TotalItemsProps) => {
+const TotalItems = ({category ,item, isItemEdit, size, sizeType}:TotalItemsProps) => {
 
     return(
         <>
@@ -34,7 +32,7 @@ const TotalItems = ({category ,item, isItemEdit, size, sizeType, setItemsInCart}
             <ItemKeyValue item={item} label={'Бренд'} value = {'brand'}/>
             <div style={{ display: "flex", marginTop:'auto', alignItems:'center', position:'absolute', bottom:'0.4rem' }}>
                 <ItemPrice item={item}/>
-                <AddToCartButton item={item} setItemsInCart={setItemsInCart}/>
+                <AddToCartButton item={item}/>
             </div>
         </>
     )

@@ -1,4 +1,4 @@
-import { ItemInCart, Item } from "../interfaces"
+import { ItemInCart } from "../interfaces"
 
 const toLocalstorage = (storage:string, item:ItemInCart[]) => {
     localStorage.setItem(storage, JSON.stringify(item));

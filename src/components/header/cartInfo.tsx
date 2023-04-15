@@ -22,14 +22,14 @@ const CartInfo = ({ itemsCount, price }:CartInfoProps) => {
           </div>
         </div>
 
-        {price ?
+  
            <div className={styles.cartPrice}>
            <p className={styles.contactText}>Корзина</p>
            <p className={styles.price}>
              {price} <span>&#8381;</span>
            </p>
          </div>
-        :null}
+     
      
       </div>
     );

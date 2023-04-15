@@ -1,4 +1,4 @@
-import { useState, Dispatch, SetStateAction } from "react";
+import { useState } from "react";
 import IncreaseAndDecreaseItem from "../components/features/increaseAndDecreaseItem";
 import ProductSize from "../components/item/itemSize";
 import Modal from "../components/modalPage";
@@ -11,26 +11,26 @@ import ItemPrice from "../components/item/itemPrice";
 import ItemDescription from "../components/item/itemDescription";
 import Breadcrumbs from "../components/breadcrumbs";
 
+import CartStore from '../stores/cartStore';
+
 interface CartProps{
   price:number;
   itemsInCart: ItemInCart[];
-  setItemsInCart: Dispatch<SetStateAction<ItemInCart[]>>;
+
 }
 
-const Cart = ({ price, itemsInCart, setItemsInCart }: CartProps) => {
+const Cart = ({ price, itemsInCart}: CartProps) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   
 
   const deleteItem = (barcode: number) => {
-    setItemsInCart((old) => {
-      return old.filter((e) => e.barcode !== barcode);
-    });
+    CartStore.deleteItem(barcode)
   };
 
   const handleModal = () => {
     setShowModal(true);
     localStorage.removeItem("cart9090");
-    setItemsInCart([]);
+    CartStore.setItemsInCart([]);
     setTimeout(() => {
       setShowModal(false);
     }, 3000);
@@ -71,7 +71,7 @@ const Cart = ({ price, itemsInCart, setItemsInCart }: CartProps) => {
                     <IncreaseAndDecreaseItem
                       barcode={item.barcode}
                       count={item.count}
-                      setItemsInCart={setItemsInCart}
+                     
                       item={item}
                     />
                     <ItemPrice  item={item} styleLarge={true}/>

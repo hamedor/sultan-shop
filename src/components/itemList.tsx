@@ -1,4 +1,4 @@
-import { Item, ItemInCart } from "../interfaces";
+import { Item } from "../interfaces";
 import { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import styles from "../styles/itemList.module.css";
@@ -10,7 +10,6 @@ import PaginationButtons from "./features/paginationButtons";
 
 interface ItemListProps {
   items: Item[];
-  setItemsInCart: Dispatch<SetStateAction<ItemInCart[]>>;
   adminMode: boolean;
   setItems: Dispatch<SetStateAction<Item[]>>;
   categories: string[];
@@ -21,7 +20,6 @@ interface ItemListProps {
 const ItemList = ({
   categories,
   items,
-  setItemsInCart,
   setItems,
   adminMode,
   currentPage,
@@ -54,7 +52,7 @@ const ItemList = ({
               title={e.title}
               adminMode={adminMode}
               categories={categories}
-              setItemsInCart={setItemsInCart}
+             
 
             />
           );
