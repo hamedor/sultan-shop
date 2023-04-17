@@ -34,13 +34,13 @@ const initialItemsInCart: ItemInCart[] = [
 
 
 describe('useCart', () => {
-  it('Инициализация итемов в корзине', () => {
+  test('Инициализация итемов в корзине', () => {
 
     const { result } = renderHook(() => useCart(initialItemsInCart));
     expect(result.current.itemsInCart).toEqual(initialItemsInCart);
   });
 
-  it('Расчёт количества итемов в корзине, а также перерасчёт при изменениях', () => {
+  test('Расчёт количества итемов в корзине, а также перерасчёт при изменениях', () => {
     const { result } = renderHook(() => useCart(initialItemsInCart));
     expect(result.current.itemsCount).toBe(3);
   

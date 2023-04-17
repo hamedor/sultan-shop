@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx"
 import toLocalstorage from '../functions/toLocalStorage';
 import { ItemInCart, Item } from '../interfaces';
 
-class CartStore {
+export class CartStore {
   itemsInCart: ItemInCart[]
   itemsCount: number = 0
   price: number = 0
@@ -62,4 +62,4 @@ class CartStore {
 }
 
 const store = new CartStore([])
-export default store
+export default store;

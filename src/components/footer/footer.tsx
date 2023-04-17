@@ -1,14 +1,14 @@
-import styles from "../styles/footer.module.css";
-import logo from "../assets/logo/sultanLogoWhite.svg";
-import whatsup from "../assets/icons/whatsup.png";
-import telegram from "../assets/icons/telegramm.png";
+import styles from "../../styles/footer.module.css";
+import logo from "../../assets/logo/sultanLogoWhite.svg";
+import whatsup from "../../assets/icons/whatsup.png";
+import telegram from "../../assets/icons/telegramm.png";
 
-import visa from "../assets/icons/visa.png";
-import mastercard from "../assets/icons/mastercard.png";
-import triangle from "../assets/icons/triangle.png";
-import downloadIcon from "../assets/icons/download.svg";
-import Title from "./footer/title";
-import ListItem from "./footer/listItem";
+import visa from "../../assets/icons/visa.png";
+import mastercard from "../../assets/icons/mastercard.png";
+import triangle from "../../assets/icons/triangle.png";
+import downloadIcon from "../../assets/icons/download.svg";
+import Title from "./title";
+import ListItem from "./listItem";
 
 const Footer = () => {
   return (

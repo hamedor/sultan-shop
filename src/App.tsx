@@ -3,7 +3,7 @@ import data from "./assets/data.json";
 
 import "./App.css";
 import Header from "./components/header/header";
-import Footer from "./components/footer";
+import Footer from "./components/footer/footer";
 
 import Catalog from "./pages/catalog";
 import Cart from "./pages/cart";
