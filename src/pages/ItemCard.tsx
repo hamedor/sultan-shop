@@ -57,7 +57,6 @@ const ItemCard = ({ itemsInCart }: itemCardProps) => {
           <div key={item.barcode}>
           <Breadcrumbs breadcrumbs ={[
             {label:'Главная', to: '/'},
-            {label: 'Каталог', to: '/catalog'}
           ]} item={item}/>
           <div className={styles.flex} key={item.barcode}>
               <ItemImage isItemCard={true} item={item}/>

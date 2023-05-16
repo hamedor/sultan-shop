@@ -19,7 +19,7 @@ const BottomLine = ({price, itemsCount}:BottomLineProps) => {
         <hr className={styles.hr}></hr>
         <div className={styles.content}>
           <Logo />
-          <Button text={"Каталог"} icon={<Squares />} link={'/catalog'}/>
+          <Button text={"Каталог"} icon={<Squares />} link={'/'}/>
           <SearchInput />
           <ContactBlock />
           <Button text={"Прайс-лист"} icon ={<img src={downloadIcon} alt="иконка загрузки"></img>}/>

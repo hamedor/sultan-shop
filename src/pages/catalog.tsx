@@ -136,7 +136,7 @@ const Catalog = ({
 
       <Breadcrumbs breadcrumbs ={[
             {label:'Главная', to: '/'},
-            {label: 'Каталог', to: '/catalog'}
+
           ]} />
 
 

@@ -41,7 +41,7 @@ const Header = ({ price, itemsCount }: HeaderProps) => {
         </div>
         <hr className={styles.hrMobile}></hr>
         <div className={styles.lineMobile}>
-          <Button text={'Каталог'} icon={<Squares/> } link={'/catalog'} mobile={true}/>
+          <Button text={'Каталог'} icon={<Squares/> } link={'/'} mobile={true}/>
           <Button text={'Поиск'} icon={<img src={searchBlue} alt="иконка поиска"></img>} mobile={true}/>
         </div>
         <hr className={styles.hrMobile}></hr>

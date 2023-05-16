@@ -8,7 +8,6 @@ import Footer from "./components/footer/footer";
 import Catalog from "./pages/catalog";
 import Cart from "./pages/cart";
 import ItemCard from "./pages/ItemCard";
-import Main from "./pages/main";
 
 import { Item } from "./interfaces";
 import initializeItems from './functions/initializeItems';
@@ -35,17 +34,11 @@ function App() {
         <div className="wrapper">
           <Header price={cartStore.price} itemsCount={cartStore.itemsCount} />
           <Routes>
-            <Route path="/" element={<Main />} />
-            <Route
-              path="/catalog"
-              element={
-                <Catalog
+            <Route path="/" element={  <Catalog
                   data={data}
                   items={items}
                   setItems={setItems}
-                />
-              }
-            />
+                />} />
             <Route
               path="/cart"
               element={<Cart price={cartStore.price} itemsInCart={cartStore.itemsInCart} />}
